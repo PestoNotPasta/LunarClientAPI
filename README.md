@@ -1,17 +1,45 @@
-# Lunar Client Bukkit API
-> Integrate your server with Lunar Client!
+# LunarClientAPI
+LunarClientAPI is a Spigot plugin that allows developers to integrate features with LunarClient.
+ 
+[![](https://jitpack.io/v/PestoNotPasta/LunarClientAPI.svg)](https://jitpack.io/#PestoNotPasta/LunarClientAPI)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
-## Server Owners:
-> Quick and Easy Setup
+## Setup:
 
- If you are looking for a simple one click solution to integrating LunarClient features then [BukkitImpl](https://github.com/LunarClient/BukkitImpl) is your best bet.
-BukkitImpl is a simple install bukkit plugin which will allow you to enable and disable features at will all from a single `config.yml` file.
+Unlike the original API, there is no need to add the NetHandler as it's now directly shaded! 
 
-## Developers: 
-> Technical Integration Setup
+Firstly, download the most recent [release](https://github.com/PestoNotPasta/LunarClientAPI/releases), drop it in your `plugins` folder and restart. Then, simply add
+the dependency to your plugin as follows, replacing `[LATEST]` with latest version:
 
-You'll first need to install [BukkitAPI-NetHandler](https://github.com/LunarClient/BukkitAPI-NetHandler), which will
-define the protocol that can be sent between the server and client for this API to use.
+##### Maven:
+```xml
+  <repository>
+      <id>jitpack-repo</id>
+      <url>https://jitpack.io</url>
+  </repository>
+  
+  <dependency>
+      <groupId>com.github.PestoNotPasta</groupId>
+      <artifactId>LunarClientAPI</artifactId>
+      <version>[LATEST]</version>
+      <scope>provided</scope>
+  </dependency>
+```
+##### Gradle:
+```groovy
+repositories {
+    url = 'https://jitpack.io/'
+}
+
+dependencies {
+    compileOnly 'com.github.PestoNotPasta:LunarClientAPI:[LATEST]'
+}
+```
+##### IMPORTANT:
+Don't forget to update your `plugin.yml`:
+```yaml
+depend: [LunarClientAPI]
+```
 
 #### Basics:
 `LunarClientAPI.java` is a singleton, you can access it through `LunarClientAPI#getInstance()`.

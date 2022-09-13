@@ -1,0 +1,50 @@
+plugins {
+    id 'com.github.johnrengelman.shadow' version '5.0.0'
+    id 'maven-publish'
+    id 'java'
+}
+
+group = 'com.github.PestoNotPasta'
+version = '2.0'
+java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+afterEvaluate {
+    publishing {
+        publications {
+            mavenJava(MavenPublication) {
+                from components.java
+                groupId = 'com.github.PestoNotPasta'
+                artifactId = 'LunarClientAPI'
+                version = '2.0'
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+    maven {
+        url = 'https://jitpack.io'
+    }
+    maven {
+        url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+    }
+    maven {
+        url = 'https://hub.spigotmc.org/nexus/content/repositories/snapshots/'
+    }
+
+}
+
+dependencies {
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+    implementation 'org.projectlombok:lombok:1.18.22'
+    implementation 'com.github.LunarClient:BukkitAPI-NetHandler:master-SNAPSHOT'
+    compileOnly 'org.spigotmc:spigot-api:1.12-R0.1-SNAPSHOT'
+}
+
+shadowJar {
+    relocate 'com.lunarclient.bukkitapi.nethandler', 'shaded.com.lunarclient.bukkitapi.nethandler'
+    archiveFileName.set("${project.name}-${project.version}.jar")
+}
+
+build.dependsOn shadowJar
