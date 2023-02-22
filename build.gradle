@@ -5,7 +5,7 @@ plugins {
 }
 
 group = 'com.github.PestoNotPasta'
-version = '2.0'
+version = '1.0.0'
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 afterEvaluate {
@@ -15,7 +15,7 @@ afterEvaluate {
                 from components.java
                 groupId = 'com.github.PestoNotPasta'
                 artifactId = 'LunarClientAPI'
-                version = '2.0'
+                version = '1.0.0'
             }
         }
     }
